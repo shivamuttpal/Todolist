@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="myDIV" class="header">
+        <h2 style="margin:5px" name="heading" id="myElement">
+            <%= ListTitle%>
+        </h2>
+        <form action="/" method="post">
+            <input type="text" name="text1" placeholder="Title..." id="myInput" autocomplete="off">
+            <input class="addBtn" type="submit" name="list" value=<%= ListTitle %>>
+        </form>
+    </div>
+
+    <ul id="myUL">
+        <!-- <form action="/delete" method="post">
+
+            <% for(var i=0; i<newlistItems.length;i++){ %>
+                <li>
+                    <input type="checkbox" class="btn btn-danger" value="<%= newlistItems[i]._id %>" name="delete" onChange="this.form.submit()">
+                    <%= newlistItems[i].name %>
+                    <button >Delete</button>
+                    <input type="hidden" name="listName" value="<%= ListTitle %>"></input>
+                </li>
+            <% } %>
+
+        </form> -->
+
+        <%  newlistItems.forEach(function(item){ %>
+            <form action="/delete" method="post">
+                <li>
+                    <input type="checkbox" class="btn btn-danger" value="<%= item._id %>" name="delete" onChange="this.form.submit()">
+                    <%= item.name %>
+                </li>
+                <input type="hidden" name="listName" value="<%= ListTitle %>"></input>
+            </form>
+
+        <%  }) %>
+    </ul>
+
+</body>
+
+</html>
